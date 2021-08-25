@@ -40,7 +40,7 @@ class SubsController < ApplicationController
   def update
     # @sub = Sub.find(params[:id])
   end
-  def delete
+  def destroy
     @sub.destroy
     redirect_to root_path
   end
