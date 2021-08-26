@@ -6,8 +6,17 @@ class TopicsController < ApplicationController
     render component: "Topics", props:{sub: @sub, topics: @sub.topics}
   end
 
+  def new
+    render component: "NewTopic", props:{subYo:@sub, x:1, t:'this is t'}
+  end
+
   def create
-    @sub.topics.new(topic_params)
+   @topic = @sub.topics.new(topic_params)
+   if(@topic.save)
+    redirect_to sub_topics_path(@sub.id)
+   else
+    # todo handle bad input
+   end
   end
 
   def show
