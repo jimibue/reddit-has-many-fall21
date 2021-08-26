@@ -12,7 +12,12 @@ export default (props) => {
         <div key={topic.id} className="topic-card">
           <h3>{topic.name}</h3>
           <p>{topic.body}</p>
-          <a href={`/subs/${sub.id}/topics/${topic.id}`}>show topic</a>
+          <a href={`/subs/${sub.id}/topics/${topic.id}`}>
+            show topic (topic show method)
+          </a>
+          <a href={`/topics/${topic.id}/comments`}>
+            show topic (comments index method)
+          </a>
           <a href={`/subs/${sub.id}/topics/${topic.id}/edit`}>edit topic</a>
           <a href={`/subs/${sub.id}/topics/${topic.id}`} data-method="delete">
             delete topic

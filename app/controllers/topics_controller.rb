@@ -33,7 +33,8 @@ class TopicsController < ApplicationController
 
   def show
     @topic = @sub.topics.find(params[:id])
-    render json: @topic
+    # render json: @topic
+    render component: "Topic", props: {topic:@topic, comments:@topic.comments}
   end
 
   def destroy

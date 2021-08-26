@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :subs do
     resources :topics
   end
+
+  resources :topics do 
+    resources :comments
+  end
   # get '/subs', to:'subs#index' # all subs
   # get '/subs/:id', to:'subs#show'  # one subs
   # get '/subs/new', to:'subs#new'  # form for a new sub
