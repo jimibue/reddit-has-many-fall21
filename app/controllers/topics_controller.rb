@@ -1,13 +1,17 @@
 class TopicsController < ApplicationController
   before_action :set_sub
-  before_action :set_topic, only: [:show]
+  before_action :set_topic, only: [:show,:edit, :update]
 
   def index
     render component: "Topics", props:{sub: @sub, topics: @sub.topics}
   end
 
   def new
-    render component: "NewTopic", props:{subYo:@sub, x:1, t:'this is t'}
+    render component: "NewTopic", props:{sub:@sub, x:1, t:'this is t'}
+  end
+
+  def edit
+    render component: "EditTopic", props:{sub:@sub, topic:@topic}
   end
 
   def create
@@ -17,6 +21,14 @@ class TopicsController < ApplicationController
    else
     # todo handle bad input
    end
+  end
+
+  def update
+    if(@topic.update(topic_params))
+      redirect_to sub_topics_path(@sub.id)
+    else
+         # todo handle bad input
+    end
   end
 
   def show

@@ -13,6 +13,7 @@ export default (props) => {
           <h3>{topic.name}</h3>
           <p>{topic.body}</p>
           <a href={`/subs/${sub.id}/topics/${topic.id}`}>show topic</a>
+          <a href={`/subs/${sub.id}/topics/${topic.id}/edit`}>edit topic</a>
         </div>
       ))}
     </>
