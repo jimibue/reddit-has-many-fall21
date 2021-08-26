@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_sub
-  before_action :set_topic, only: [:show,:edit, :update]
+  before_action :set_topic, only: [:show,:edit, :update, :destroy]
 
   def index
     render component: "Topics", props:{sub: @sub, topics: @sub.topics}
@@ -34,6 +34,11 @@ class TopicsController < ApplicationController
   def show
     @topic = @sub.topics.find(params[:id])
     render json: @topic
+  end
+
+  def destroy
+    @topic.destroy
+    redirect_to sub_topics_path(@sub.id)
   end
  
   private

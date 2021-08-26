@@ -14,6 +14,9 @@ export default (props) => {
           <p>{topic.body}</p>
           <a href={`/subs/${sub.id}/topics/${topic.id}`}>show topic</a>
           <a href={`/subs/${sub.id}/topics/${topic.id}/edit`}>edit topic</a>
+          <a href={`/subs/${sub.id}/topics/${topic.id}`} data-method="delete">
+            delete topic
+          </a>
         </div>
       ))}
     </>
