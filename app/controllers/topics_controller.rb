@@ -6,12 +6,21 @@ class TopicsController < ApplicationController
     render component: "Topics", props:{sub: @sub, topics: @sub.topics}
   end
 
+  def create
+    @sub.topics.new(topic_params)
+  end
+
   def show
     @topic = @sub.topics.find(params[:id])
     render json: @topic
   end
  
   private
+
+  def topic_params
+    params.require(:topic).permit(:name, :body)
+  end
+  
   
   def set_sub
     @sub = Sub.find(params[:sub_id])
