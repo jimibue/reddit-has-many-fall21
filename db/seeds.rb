@@ -1,11 +1,12 @@
 require "faker"
 Sub.destroy_all
 Topic.destroy_all
+
 programming = Sub.create(name: "Programming")
 bob_ross = Sub.create(name: "Bob Ross")
 music = Sub.create(name: "Music")
 
-programming.topics.create(name:"Javascript", body:'Js is the language od the web and totes my faves')
+js = programming.topics.create(name:"Javascript", body:'Js is the language od the web and totes my faves')
 programming.topics.create(name:"Ruby", body:'Ruby is the language of the rails')
 
 Topic.create(name:'all about happy trees', body:"bob roos likes to paint trees", sub_id:bob_ross.id)
@@ -13,3 +14,6 @@ Topic.create(name:'all about happy Mountains', body:"bob ross likes to paint Mou
 
 music.topics.create(name:'80s synth', body:'totes mcgee my friend')
 music.topics.create(name:'90s synth', body:'does this exist?')
+
+js.comments.create(body:"Yes I agree js is awesome", flagged: false)
+js.comments.create(body:" 5$%^$^%$^ js ", flagged: true)
